@@ -1,0 +1,23 @@
+# Ignore Python virtual environment
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Node
+node_modules/
+dist/
+.project/
+.env
+.env.local
+
+# OS and IDE
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/

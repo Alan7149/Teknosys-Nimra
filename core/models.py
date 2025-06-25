@@ -22,3 +22,4 @@ class Theme(models.Model):
     font_family = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)  # Remove default
     updated_at = models.DateTimeField(auto_now=True)
+

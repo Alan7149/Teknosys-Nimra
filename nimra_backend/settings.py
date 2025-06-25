@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',  # Add CORS support
+    'modeltranslation',  # Must come before your apps
     'core',
     'channels',  # For WebSocket support
     'grappelli',
@@ -118,10 +119,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+USE_I18N = True
+LANGUAGES = [
+    ('en', 'English'),
+    ('ar', 'Arabic'),
+]
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -135,9 +142,15 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 REST_FRAMEWORK = {
     # Temporarily disable authentication for development to fix 403
     # 'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 10
 }
+
+REST_FRAMEWORK['DEFAULT_FILTER_BACKENDS'] = ['django_filters.rest_framework.DjangoFilterBackend']
 
 # CORS Configuration
 CORS_ALLOWED_ORIGINS = [

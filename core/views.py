@@ -20,14 +20,13 @@ class ThemeSerializer(serializers.ModelSerializer):
         model = Theme
         fields = '__all__'
 
-# --- ViewSets with filter/search ---
 class ContentViewSet(viewsets.ModelViewSet):
     queryset = Content.objects.all()
     serializer_class = ContentSerializer
-    permission_classes = [permissions.AllowAny]  # change to IsAuthenticated if needed
+    permission_classes = [permissions.AllowAny]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ['section']
-    search_fields = ['title', 'section']
+    filterset_fields = ['page', 'section']  # ✅ Add 'page' here
+    search_fields = ['page', 'section', 'content']
 
 class TeamViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()

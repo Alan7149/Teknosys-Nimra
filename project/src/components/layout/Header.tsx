@@ -38,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             <img
               src={LogoImage}
               alt="Nimra Jeddah Electric Est. Logo"
-              className="h-10 sm:h-12 w-auto"
+              className="h-10 sm:h-12 w-auto "
               loading="lazy"
             />
             <span className="text-white text-lg sm:text-xl font-bold">Nimra Jeddah Trading Est.</span>

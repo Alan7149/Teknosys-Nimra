@@ -156,6 +156,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="border-t border-white/20 mt-6 pt-4 text-center text-xs md:text-sm">
           <p>© {new Date().getFullYear()} Nimra Jeddah Electric Est. All rights reserved.</p>
+          <p>Powered by <a href="https://www.teknosys.net" className="text-secondary-300">Teknosys</a></p>
         </div>
       </div>
 

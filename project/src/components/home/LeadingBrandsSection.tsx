@@ -23,7 +23,7 @@ const brandLogos = [
 
 const LeadingBrandsSection: React.FC = () => {
   return (
-    <section className="bg-gray-100 py-16">
+    <section className=" py-16 ">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8">
           <span className="text-secondary-500">Our</span> Brands

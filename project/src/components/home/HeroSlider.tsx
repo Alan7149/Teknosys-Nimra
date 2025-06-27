@@ -10,7 +10,7 @@ import 'swiper/css/effect-fade';
 
 import videoSrc from '../../assets/4kNimra.mp4';
 import fullNameImage from '../../assets/images/Full_name.jpg';
-
+import Saudi from '../../assets/images/Saudi_Vision_2030_logo.svg.png';
 const productImages = {
   slide1: fullNameImage,
   slide2: fullNameImage,
@@ -151,6 +151,15 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides }) => {
         <div className="swiper-button-prev hidden sm:block" aria-label="Previous slide"></div>
         <div className="swiper-button-next hidden sm:block" aria-label="Next slide"></div>
       </Swiper>
+
+      {/* Image in the bottom right corner */}
+      <img
+        src={Saudi} // Replace with your desired image path
+        alt="Nimra Electricals Logo"
+        className="absolute bottom-8 right-8 w-20 h-20 object-contain z-30"
+        loading="lazy"
+        onError={(e) => console.log('Image Error:', e)}
+      />
     </section>
   );
 };

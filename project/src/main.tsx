@@ -1,17 +1,16 @@
-// src/main.tsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
-import { Provider } from 'react-redux';
-import { store } from './store'; // ✅ Make sure this exists
-import { BrowserRouter } from 'react-router-dom';
+import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Provider store={store}>               {/* Redux Provider */}
-      <BrowserRouter>                      {/* React Router */}
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <HelmetProvider>
+      <Router>
         <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
+      </Router>
+    </HelmetProvider>
+  </StrictMode>
 );

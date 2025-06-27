@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import PageBanner from '../components/common/PageBanner';
 import ContactForm from '../components/contact/ContactForm';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
+  const [showWhatsapp, setShowWhatsapp] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Assume "Scroll to Top" appears when scrolled down 100px or more
+      const scrollPosition = window.scrollY;
+      setShowWhatsapp(scrollPosition < 300); // Hide WhatsApp when scrolled down 100px or more
+    };
+
+    // Initial check
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -83,6 +98,18 @@ const ContactPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {showWhatsapp && (
+        <a
+          href="https://wa.me/966564676336?text=Hello%20Nimra%20Electricals%2C%20I%20have%20a%20question%20at%2011%3A16%20AM%20IST%20on%20Friday%2C%20June%2027%2C%202025."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
+          aria-label="Contact us on WhatsApp"
+        >
+          <MessageCircle className="w-6 h-6" />
+        </a>
+      )}
     </>
   );
 };

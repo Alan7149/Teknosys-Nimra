@@ -6,23 +6,23 @@
 
 @layer base {
   :root {
-    --primary-500: #1E3A8A; 
-    --primary-600: #1E40AF; 
-    --secondary-500: #DC2626; 
-    --secondary-600: #B91C1C; 
-    --neutral-50: #F9FAFB; 
-    --neutral-900: #1F2937; 
-    --gradient-start: #1E3A8A;
-    --gradient-end: #DC2626;  
+    --primary-500: #3B82F6; /* Softer blue */
+    --primary-600: #2563EB; /* Slightly darker blue */
+    --secondary-500: #F87171; /* Softer red */
+    --secondary-600: #EF4444; /* Slightly darker red */
+    --neutral-50: #F3F4F6; /* Lighter neutral */
+    --neutral-900: #374151; /* Softer dark gray */
+    --gradient-start: #3B82F6; /* Updated gradient start */
+    --gradient-end: #F87171; /* Updated gradient end */
   }
 
   html {
     scroll-behavior: smooth;
-    font-size: clamp(14px, 1.5vw, 16px); 
+    font-size: clamp(14px, 1.5vw, 16px);
   }
   
   body {
-    @apply font-sans text-gray-800 bg-white;
+    @apply font-sans text-gray-700 bg-gray-50; /* Softer text and background */
     font-family: 'Inter', sans-serif;
     font-feature-settings: "kern";
     text-rendering: optimizeLegibility;
@@ -44,14 +44,14 @@
 
   @media (prefers-contrast: high) {
     :root {
-      --primary-500: #000066;
-      --primary-600: #0000CC;
-      --secondary-500: #FF0000;
-      --secondary-600: #CC0000;
+      --primary-500: #1E40AF; /* Adjusted for contrast */
+      --primary-600: #1E3A8A;
+      --secondary-500: #DC2626;
+      --secondary-600: #B91C1C;
       --neutral-50: #FFFFFF;
-      --neutral-900: #000000;
-      --gradient-start: #000066;
-      --gradient-end: #FF0000;
+      --neutral-900: #1F2937;
+      --gradient-start: #1E40AF;
+      --gradient-end: #DC2626;
     }
   }
 }
@@ -69,35 +69,28 @@
     @apply inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-medium transition-all duration-300 border rounded-lg transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary-500/50;
   }
   
-  /* Primary button with gradient */
   .btn-primary {
     @apply text-white bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] border-0 hover:from-[var(--primary-600)] hover:to-[var(--secondary-600)] rounded-md shadow-md transition-all duration-300;
-
   }
   
-  /* Secondary button with solid color */
   .btn-secondary {
     @apply text-white bg-secondary-500 border-secondary-500 hover:bg-secondary-600 hover:border-secondary-600;
   }
   
-  /* Outline button */
   .btn-outline {
     @apply text-primary-500 bg-transparent border-primary-500 hover:bg-primary-500 hover:text-white;
   }
   
-  /* Card styles */
   .card {
-    @apply overflow-hidden bg-white rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 p-8; /* Increased padding from p-6 to p-8 */
+    @apply overflow-hidden bg-white rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 p-8;
   }
   
-  /* Section styles */
   .section {
-    @apply pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24; /* Increased padding for more space */
+    @apply pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24;
   }
   
-  /* Section title styles */
   .section-title {
-    @apply mb-10 sm:mb-12 text-center; /* Increased margin-bottom for more space */
+    @apply mb-10 sm:mb-12 text-center;
   }
   
   .section-title h2 {
@@ -110,15 +103,13 @@
   }
   
   .section-title p {
-    @apply max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg text-gray-600;
+    @apply max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg text-gray-500; /* Softer gray text */
   }
 
-  /* Video background styles */
   .video-background {
     @apply absolute inset-0 w-full h-full object-cover z-0;
   }
 
-  /* Skip link accessibility */
   .skip-link {
     @apply absolute top-0 left-0 z-50 p-2 bg-primary-500 text-white focus:top-4 focus:left-4 transition-all;
     transform: translateY(-100%);
@@ -128,21 +119,18 @@
   }
 }
 
-/* Header styles with gradient and scroll behavior */
 .header-transparent {
-  @apply bg-gradient-to-r from-blue-900 via-purple-700 to-red-600 text-white;
+  @apply bg-gradient-to-r from-blue-400 via-purple-300 to-red-300 text-white; /* Lighter gradient */
 }
 
 .header-solid {
-  @apply bg-gradient-to-r from-blue-900 via-purple-700 to-red-600 shadow-lg text-white;
+  @apply bg-gradient-to-r from-blue-400 via-purple-300 to-red-300 shadow-lg text-white; /* Lighter gradient */
 }
 
 .skip-link {
-  @apply sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:bg-white focus:text-black p-2;
+  @apply sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:bg-white focus:text-gray-800 p-2; /* Softer text color */
 }
 
-
-/* Animation utilities */
 .fade-in {
   animation: fadeIn 0.8s ease-in-out;
 }
@@ -161,7 +149,6 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* Swiper styles */
 .swiper-pagination-bullet {
   @apply w-2 h-2 sm:w-3 sm:h-3 bg-white bg-opacity-50;
 }

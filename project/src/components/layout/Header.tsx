@@ -27,35 +27,36 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         Skip to content
       </a>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? 'header-solid' : 'header-transparent'
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          isScrolled ? 'header-solid shadow-xl' : 'header-transparent'
         }`}
+        style={{ height: '60px' }}
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="container-full py-3 sm:py-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2 sm:space-x-3 animate-fade-in">
+        <div className="container-full py-2 sm:py-3 flex justify-between items-center h-full">
+          <Link to="/" className="flex items-center animate-slide-up">
             <img
               src={LogoImage}
-              alt="Nimra Jeddah Electric Est. Logo"
-              className="h-10 sm:h-12 w-auto"
+              alt="Company Logo"
+              className="h-8 sm:h-10 w-auto transition-transform duration-300 hover:scale-110 hover:shadow-md"
               loading="lazy"
             />
-            <span className="text-white text-lg sm:text-xl font-bold">Nimra Jeddah Trading Est.</span>
           </Link>
 
-          <nav className="hidden md:flex space-x-4 lg:space-x-8" aria-label="Primary navigation">
+          <nav className="hidden md:flex space-x-6 lg:space-x-10" aria-label="Primary navigation">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `text-sm lg:text-base text-white hover:text-secondary-500 transition-colors duration-300 ${
-                    isActive ? 'text-secondary-500 font-semibold' : ''
+                  `relative text-xl lg:text-2xl text-white font-semibold transition-all duration-300 group hover:text-[var(--secondary-500)] hover:animate-bounce-slow hover:shadow-[0_0_10px_var(--secondary-500)] ${
+                    isActive ? 'text-[var(--secondary-500)] font-bold' : ''
                   }`
                 }
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-1 bg-[var(--secondary-500)] group-hover:w-full transition-all duration-300"></span>
               </NavLink>
             ))}
           </nav>
@@ -64,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             <button
               onClick={toggleMenu}
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
-              className="p-2 rounded-md hover:bg-gray-100 transition-colors text-white"
+              className="p-2 rounded-full bg-[var(--primary-600)]/80 hover:bg-[var(--primary-600)] text-white transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:animate-pulse"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -72,9 +73,9 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         </div>
 
         {isOpen && (
-          <div className="md:hidden bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] shadow-md animate-slide-up">
+          <div className="md:hidden bg-[var(--primary-500)]/95 backdrop-blur-md shadow-2xl animate-slide-up">
             <nav
-              className="flex flex-col items-center space-y-4 py-6"
+              className="flex flex-col items-center space-y-6 py-6"
               aria-label="Mobile navigation"
             >
               {navLinks.map((navLink) => (
@@ -82,13 +83,14 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
                   key={navLink.to}
                   to={navLink.to}
                   className={({ isActive }) =>
-                    `text-base text-white hover:text-secondary-500 transition-colors duration-300 ${
-                      isActive ? 'text-secondary-500 font-semibold' : ''
+                    `relative text-xl text-white font-semibold transition-all duration-300 transform hover:scale-105 hover:text-[var(--secondary-500)] hover:animate-bounce-slow hover:shadow-[0_0_10px_var(--secondary-500)] ${
+                      isActive ? 'text-[var(--secondary-500)] font-bold' : ''
                     }`
                   }
                   onClick={toggleMenu}
                 >
                   {navLink.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-1 bg-[var(--secondary-500)] hover:w-full transition-all duration-300"></span>
                 </NavLink>
               ))}
             </nav>

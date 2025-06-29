@@ -6,14 +6,12 @@
 
 @layer base {
   :root {
-    --primary-500: #3B82F6; /* Softer blue */
-    --primary-600: #2563EB; /* Slightly darker blue */
-    --secondary-500: #F87171; /* Softer red */
-    --secondary-600: #EF4444; /* Slightly darker red */
-    --neutral-50: #F3F4F6; /* Lighter neutral */
-    --neutral-900: #374151; /* Softer dark gray */
-    --gradient-start: #3B82F6; /* Updated gradient start */
-    --gradient-end: #F87171; /* Updated gradient end */
+    --primary-500: #fcbd34; /* Bright yellow-orange */
+    --primary-600: #ff9a00; /* Darker orange */
+    --secondary-500: #fcbd34; /* Same yellow-orange for consistency */
+    --secondary-600: #ff9a00; /* Darker orange */
+    --neutral-50: #ffffff; /* White */
+    --neutral-900: #2c2c2c; /* Dark gray */
   }
 
   html {
@@ -22,7 +20,7 @@
   }
   
   body {
-    @apply font-sans text-gray-700 bg-gray-50; /* Softer text and background */
+    @apply font-sans text-gray-700 bg-gray-50;
     font-family: 'Inter', sans-serif;
     font-feature-settings: "kern";
     text-rendering: optimizeLegibility;
@@ -44,14 +42,12 @@
 
   @media (prefers-contrast: high) {
     :root {
-      --primary-500: #1E40AF; /* Adjusted for contrast */
-      --primary-600: #1E3A8A;
-      --secondary-500: #DC2626;
-      --secondary-600: #B91C1C;
-      --neutral-50: #FFFFFF;
-      --neutral-900: #1F2937;
-      --gradient-start: #1E40AF;
-      --gradient-end: #DC2626;
+      --primary-500: #ff9a00; /* Darker orange for contrast */
+      --primary-600: #cc7a00; /* Even darker orange for contrast */
+      --secondary-500: #ff9a00;
+      --secondary-600: #cc7a00;
+      --neutral-50: #ffffff;
+      --neutral-900: #1a1a1a;
     }
   }
 }
@@ -70,15 +66,15 @@
   }
   
   .btn-primary {
-    @apply text-white bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] border-0 hover:from-[var(--primary-600)] hover:to-[var(--secondary-600)] rounded-md shadow-md transition-all duration-300;
+    @apply text-white bg-[var(--primary-500)] border-0 hover:bg-[var(--primary-600)] rounded-md shadow-md transition-all duration-300;
   }
   
   .btn-secondary {
-    @apply text-white bg-secondary-500 border-secondary-500 hover:bg-secondary-600 hover:border-secondary-600;
+    @apply text-white bg-[var(--secondary-500)] border-[var(--secondary-500)] hover:bg-[var(--secondary-600)] hover:border-[var(--secondary-600)];
   }
   
   .btn-outline {
-    @apply text-primary-500 bg-transparent border-primary-500 hover:bg-primary-500 hover:text-white;
+    @apply text-[var(--primary-500)] bg-transparent border-[var(--primary-500)] hover:bg-[var(--primary-500)] hover:text-white;
   }
   
   .card {
@@ -99,11 +95,11 @@
   
   .section-title h2:after {
     content: '';
-    @apply absolute bottom-0 left-1/2 w-16 sm:w-24 h-1 bg-secondary-500 transform -translate-x-1/2;
+    @apply absolute bottom-0 left-1/2 w-16 sm:w-24 h-1 bg-[var(--secondary-500)] transform -translate-x-1/2;
   }
   
   .section-title p {
-    @apply max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg text-gray-500; /* Softer gray text */
+    @apply max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg text-gray-500;
   }
 
   .video-background {
@@ -111,7 +107,7 @@
   }
 
   .skip-link {
-    @apply absolute top-0 left-0 z-50 p-2 bg-primary-500 text-white focus:top-4 focus:left-4 transition-all;
+    @apply absolute top-0 left-0 z-50 p-2 bg-[var(--primary-500)] text-white focus:top-4 focus:left-4 transition-all;
     transform: translateY(-100%);
   }
   .skip-link:focus {
@@ -120,15 +116,15 @@
 }
 
 .header-transparent {
-  @apply bg-gradient-to-r from-blue-400 via-purple-300 to-red-300 text-white; /* Lighter gradient */
+  @apply bg-[var(--primary-500)] text-white;
 }
 
 .header-solid {
-  @apply bg-gradient-to-r from-blue-400 via-purple-300 to-red-300 shadow-lg text-white; /* Lighter gradient */
+  @apply bg-[var(--primary-500)] shadow-lg text-white;
 }
 
 .skip-link {
-  @apply sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:bg-white focus:text-gray-800 p-2; /* Softer text color */
+  @apply sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:bg-white focus:text-gray-800 p-2;
 }
 
 .fade-in {
@@ -154,10 +150,10 @@
 }
 
 .swiper-pagination-bullet-active {
-  @apply bg-secondary-500;
+  @apply bg-[var(--secondary-500)];
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  @apply text-secondary-500 w-8 h-8 sm:w-12 sm:h-12;
+  @apply text-[var(--secondary-500)] w-8 h-8 sm:w-12 sm:h-12;
 }

@@ -79,7 +79,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides }) => {
       aria-label="Hero section"
     >
       <video
-        className="video-background absolute top-0 left-0 w-full h-full object-cover"
+        className="video-background absolute top-0 left-0 w-full h-full object-cover opacity-70"
         autoPlay
         loop
         muted
@@ -92,12 +92,12 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides }) => {
         <img
           src={slides[activeIndex].image || productImages[`slide${activeIndex + 1}` as keyof typeof productImages]}
           alt=""
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-70"
           loading="lazy"
           onError={(e) => console.log('Fallback Image Error:', e)}
         />
       </video>
-      <div className="absolute inset-0 bg-black/60 z-10"></div>
+      <div className="absolute inset-0 bg-black/20 z-10"></div>
       <Swiper
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
         spaceBetween={0}
@@ -120,7 +120,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides }) => {
             <div
               className="container-full h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 z-50"
             >
-              <div className="max-w-4xl mx-auto w-full bg-gray-900/80 p-6 rounded-lg shadow-lg z-60">
+              <div className="max-w-4xl mx-auto w-full p-6 z-60">
                 <h1
                   className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 md:mb-10 text-white animate-slide-up"
                   aria-live="polite"

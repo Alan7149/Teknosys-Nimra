@@ -1,41 +1,49 @@
 import React from 'react';
 
 // Dynamically import all logo images
-const images = import.meta.glob('../../assets/images/brands/*.png', {
+const images = import.meta.glob('../../assets/images/brands/*{png,jpg,jpeg}', {
   eager: true,
   import: 'default',
 });
 
 const brandLogos = [
-  { file: 'sch.png', alt: 'schneider electric' },
-  { file: 'alfnar.png', alt: 'alfanar' },
-  { file: 'himel.png', alt: 'himel' },
-  { file: 'cawabel.png', alt: 'cawabel' },
+  { file: 'sch.png', alt: 'Schneider Electric' },
+  { file: 'alfnar.png', alt: 'Alfanar' },
+  { file: 'himel.png', alt: 'Himel' },
+  { file: 'cawabel.png', alt: 'Cawabel' },
   { file: 'RRKabel.png', alt: 'RRKabel' },
-  { file: 'elmex.png', alt: 'elmex' },
-  { file: 'bahra.png', alt: 'bahra' },
-  { file: 'selec.png', alt: 'selec' },
+  { file: 'elmex.png', alt: 'Elmex' },
+  { file: 'bahra.png', alt: 'Bahra' },
+  { file: 'selec.png', alt: 'Selec' },
   { file: 'trinity.png', alt: 'Trinity Touch' },
-  { file: 'nvent3.png', alt: 'nvent hoffman' },
+  { file: 'ksa_enclosure.jpg', alt: 'KSA Enclosure' },
+  { file: 'nvent3.png', alt: 'nVent Hoffman' },
   { file: 'pce.png', alt: 'PCE' },
-  { file: 'cs.png', alt: 'c&s electric' },
+  { file: 'axis.jpg', alt: 'Axis' },
+  { file: 'abb.png', alt: 'ABB' },
+  { file: 'cs.png', alt: 'C&S Electric' },
+  { file: 'jeddahcablescomapny.png', alt: 'Jeddah Cables Company' },
+  { file: 'lselectric.png', alt: 'LS Electric' },
+  { file: 'socomec.png', alt: 'Socomec' },
+  { file: 'furse.jpg', alt: 'Furse' },
+  { file: 'leipole.png', alt: 'Leipole' },
 ];
 
 const LeadingBrandsSection: React.FC = () => {
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-100 to-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-10 text-center text-gray-800 animate-slide-down">
-          <span className="text-[var(--secondary-500)]">Our</span> Leading Brands
+    <section className="py-20 bg-gradient-to-br from-gray-100 to-white w-full">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-12 text-center text-gray-800 animate-slide-down">
+          <span className="text-[var(--secondary-500)]">Our</span> Premier Brands
         </h2>
-        <div className="border-b-4 border-[var(--primary-500)] w-16 mx-auto mb-10 animate-pulse-slow"></div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="border-b-8 border-[var(--primary-500)] w-24 mx-auto mb-12 animate-pulse-slow"></div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-6 w-full mx-auto max-w-full">
           {brandLogos.map((brand, index) => {
             const imageSrc = images[`../../assets/images/brands/${brand.file}`] as string;
             return (
               <div
                 key={index}
-                className="flex justify-center items-center p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 animate-slide-up-delay"
+                className="flex justify-center items-center p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-500 animate-slide-up-delay"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <img

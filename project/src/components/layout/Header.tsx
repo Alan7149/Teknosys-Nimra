@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
           isScrolled ? 'bg-gradient-to-r from-[var(--primary-500)] to-[var(--primary-600)] shadow-2xl' : 'bg-gradient-to-r from-[var(--primary-500)/80] to-[var(--primary-600)/80] backdrop-blur-md'
         }`}
-        style={{ height: '50px' }}
+        style={{ height: '80px' }}
         role="navigation"
         aria-label="Main navigation"
       >

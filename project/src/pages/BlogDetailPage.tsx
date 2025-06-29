@@ -55,10 +55,12 @@ const BlogDetailPage: React.FC = () => {
 
   if (!post) {
     return (
-      <div className="py-32 text-center">
-        <h2 className="text-3xl font-bold mb-4">Blog Post Not Found</h2>
-        <p className="mb-8">The blog post you are looking for does not exist.</p>
-        <Link to="/blog" className="btn btn-primary">
+      <div className="py-32 text-center bg-gradient-to-br from-gray-100 to-white">
+        <h2 className="text-4xl font-bold text-gray-800 mb-6 animate-fade-in-up">Blog Post Not Found</h2>
+        <p className="text-lg text-gray-600 mb-8 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+          The blog post you are looking for does not exist.
+        </p>
+        <Link to="/blog" className="btn bg-[var(--primary-500)] text-white px-6 py-3 rounded-full hover:bg-[var(--primary-600)] hover:shadow-lg transition-all duration-300 animate-bounce-in" style={{ animationDelay: '400ms' }}>
           Back to Blog
         </Link>
       </div>
@@ -82,72 +84,79 @@ const BlogDetailPage: React.FC = () => {
         backgroundImage={post.image}
       />
 
-      <section className="section">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <section className="section py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 animate-fade-in-up">
             <div className="lg:col-span-2">
-              <div className="mb-6">
+              <div className="mb-8 relative">
                 <img
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-96 object-cover rounded-lg shadow-lg"
+                  className="w-full h-96 object-cover rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-[var(--primary-500)]/20 opacity-0 hover:opacity-30 transition-opacity duration-300 rounded-xl"></div>
               </div>
-              <div className="flex items-center text-sm text-gray-500 mb-6">
-                <div className="flex items-center mr-6">
-                  <User className="w-4 h-4 mr-2" />
-                  {post.author}
+              <div className="flex flex-col sm:flex-row items-center text-sm text-gray-500 mb-6 space-y-2 sm:space-y-0 sm:space-x-6">
+                <div className="flex items-center">
+                  <User className="w-5 h-5 mr-2 text-[var(--primary-500)]" />
+                  <span className="font-medium">{post.author}</span>
                 </div>
                 <div className="flex items-center">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {new Date(post.date).toLocaleDateString('en-US', {
+                  <Calendar className="w-5 h-5 mr-2 text-[var(--primary-500)]" />
+                  <span className="font-medium">{new Date(post.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
-                  })}
+                  })}</span>
                 </div>
               </div>
               <div
-                className="prose prose-lg max-w-none mb-8"
+                className="prose prose-lg max-w-none mb-10 text-gray-700 leading-relaxed animate-slide-up"
+                style={{ animationDelay: '200ms' }}
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
-              <div className="bg-primary-500 text-white p-8 rounded-lg">
+              <div className="bg-gradient-to-r from-[var(--primary-500)] to-[var(--secondary-500)] text-white p-8 rounded-xl shadow-lg animate-fade-in-up" style={{ animationDelay: '400ms' }}>
                 <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-                <p className="mb-6">
-                  Want to learn more about our insights and industry trends? Check out our latest blog posts.
-                </p>
-                <Link to="/blog" className="btn bg-white text-primary-500 border-white hover:bg-white/90">
-                  View All Posts
+                <p className="mb-6 text-lg">Explore more insights and trends in our blog to stay ahead in the electrical industry.</p>
+                <Link to="/blog" className="btn bg-white text-[var(--primary-500)] px-6 py-3 rounded-full hover:bg-white/90 hover:shadow-md transition-all duration-300">
+                  View All Posts <ArrowRight className="ml-2 w-5 h-5 inline" />
                 </Link>
               </div>
             </div>
-            <div>
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <h3 className="text-xl font-bold mb-4">Categories</h3>
+            <div className="space-y-6">
+              <div className="bg-gray-50 p-6 rounded-xl shadow-md animate-slide-up" style={{ animationDelay: '300ms' }}>
+                <h3 className="text-xl font-bold mb-4 text-[var(--primary-500)]">Categories</h3>
                 <ul className="space-y-3">
-                  {['All', 'Technology', 'Efficiency', 'Guide'].map(
-                    (category) => (
-                      <li key={category}>
-                        <Link
-                          to="/blog"
-                          className={`inline-flex items-center ${
-                            post.category === category ? 'text-secondary-500 font-semibold' : 'text-gray-700 hover:text-secondary-500'
-                          } transition-colors`}
-                          onClick={() => {
-                            // Ideally, update filter in BlogPage; here we just link
-                          }}
-                        >
-                          <ArrowRight className={`w-4 h-4 mr-2 ${post.category === category ? 'text-secondary-500' : 'text-gray-400'}`} />
-                          <span>{category}</span>
-                        </Link>
-                      </li>
-                    )
-                  )}
+                  {['All', 'Technology', 'Efficiency', 'Guide'].map((category) => (
+                    <li key={category}>
+                      <Link
+                        to="/blog"
+                        className={`inline-flex items-center ${post.category === category ? 'text-[var(--secondary-500)] font-semibold' : 'text-gray-700 hover:text-[var(--primary-500)]'} transition-colors`}
+                        onClick={() => {}}
+                      >
+                        <ArrowRight className={`w-4 h-4 mr-2 ${post.category === category ? 'text-[var(--secondary-500)]' : 'text-gray-400'}`} />
+                        <span>{category}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-gray-50 p-6 rounded-xl shadow-md animate-slide-up" style={{ animationDelay: '500ms' }}>
+                <h3 className="text-xl font-bold mb-4 text-[var(--primary-500)]">Related Posts</h3>
+                <ul className="space-y-3">
+                  {blogPosts.filter(p => p.id !== post.id).slice(0, 2).map((relatedPost) => (
+                    <li key={relatedPost.id}>
+                      <Link to={`/blog/${relatedPost.slug}`} className="text-gray-700 hover:text-[var(--primary-500)] transition-colors">
+                        {relatedPost.title}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
           </div>
         </div>
+        <div className="absolute inset-0 bg-[var(--primary-500)]/5 -z-10 transform skew-y-3 opacity-50"></div>
       </section>
     </>
   );

@@ -23,26 +23,30 @@ const brandLogos = [
 
 const LeadingBrandsSection: React.FC = () => {
   return (
-    <section className="bg-gray-100 py-16">
+    <section className="py-16 bg-gradient-to-br from-gray-100 to-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8">
-          <span className="text-secondary-500">Our</span> Brands
+        <h2 className="text-4xl font-bold mb-10 text-center text-gray-800 animate-slide-down">
+          <span className="text-[var(--secondary-500)]">Our</span> Leading Brands
         </h2>
-        <div className="border-b-2 border-gray-300 mb-6"></div>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 prc-ul leading-brands-ul text-left">
+        <div className="border-b-4 border-[var(--primary-500)] w-16 mx-auto mb-10 animate-pulse-slow"></div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {brandLogos.map((brand, index) => {
             const imageSrc = images[`../../assets/images/brands/${brand.file}`] as string;
             return (
-              <li key={index} className="flex justify-center items-center p-2">
+              <div
+                key={index}
+                className="flex justify-center items-center p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 animate-slide-up-delay"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
                 <img
                   src={imageSrc}
                   alt={brand.alt}
-                  className="transition duration-300 grayscale hover:grayscale-0 object-contain h-16 w-auto max-h-16"
+                  className="h-20 w-auto object-contain transition-transform duration-300 hover:scale-110 hover:grayscale-0 grayscale filter"
                 />
-              </li>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
     </section>
   );

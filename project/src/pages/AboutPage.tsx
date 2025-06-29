@@ -1,9 +1,7 @@
-
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import PageBanner, { PageBannerProps } from '../components/common/PageBanner';
-import { CheckCircle, RefreshCw } from 'lucide-react';
 
 // Define interfaces based on Django models
 interface ContentItem {
@@ -29,67 +27,21 @@ interface Theme {
 }
 
 const AboutPage: React.FC = () => {
-  const [content, setContent] = useState<{
-    ourStory: ContentItem;
-    vision: ContentItem;
-    mission: ContentItem;
-    teamIntro: ContentItem;
-  }>({
-    ourStory: { id: 0, page: 'about', section: 'ourStory', content: '', image: '' },
-    vision: { id: 0, page: 'about', section: 'vision', content: '' },
-    mission: { id: 0, page: 'about', section: 'mission', content: '' },
-    teamIntro: { id: 0, page: 'about', section: 'teamIntro', content: '' },
-  });
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
-  const [theme, setTheme] = useState<Theme>({ primaryColor: '#1E3A8A', secondaryColor: '#DC2626', fontFamily: 'Inter, sans-serif' });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+  const content = {
+    ourStory: { id: 0, page: 'about', section: 'ourStory', content: 'Founded in 2009, Nimra Jeddah Electric Est. has grown into a trusted leader in electrical solutions, delivering excellence across Jeddah, KSA.', image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1600' },
+    vision: { id: 0, page: 'about', section: 'vision', content: 'To be a global leader in innovative electrical solutions by 2030, setting industry standards with cutting-edge technology.' },
+    mission: { id: 0, page: 'about', section: 'mission', content: '<li>Deliver high-quality electrical products and services.</li><li>Ensure unparalleled customer satisfaction.</li><li>Drive continuous innovation and sustainability.</li>' },
+    teamIntro: { id: 0, page: 'about', section: 'teamIntro', content: 'Meet our dedicated team of experts, committed to driving excellence and innovation in every project we undertake.' },
+  };
 
-  // Debounced fetch data function
-  const fetchData = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const [contentResponse, teamResponse, themeResponse] = await Promise.all([
-        fetch(`${apiUrl}/api/content/?page=about`),
-        fetch(`${apiUrl}/api/team/`),
-        fetch(`${apiUrl}/api/theme/`),
-      ]);
+  const teamMembers = [
+    { id: 1, name: 'John Doe', role: 'CEO', contact: '+966 12 669 7155' },
+    { id: 2, name: 'Jane Smith', role: 'CTO', contact: '+966 12 669 7156' },
+    { id: 3, name: 'Ahmed Al-Faisal', role: 'Operations Manager', contact: '+966 12 669 7157' },
+  ];
 
-      if (!contentResponse.ok || !teamResponse.ok || !themeResponse.ok) {
-        throw new Error('Failed to fetch data');
-      }
+  const theme = { primaryColor: '#1E3A8A', secondaryColor: '#DC2626', fontFamily: 'Inter, sans-serif' };
 
-      const [contentData, teamData, themeData] = await Promise.all([
-        contentResponse.json(),
-        teamResponse.json(),
-        themeResponse.json(),
-      ]);
-
-      const aboutContent = (contentData.results || contentData) as ContentItem[];
-      setContent({
-        ourStory: aboutContent.find((item) => item.section === 'ourStory') || { id: 0, page: 'about', section: 'ourStory', content: '', image: '' },
-        vision: aboutContent.find((item) => item.section === 'vision') || { id: 0, page: 'about', section: 'vision', content: '' },
-        mission: aboutContent.find((item) => item.section === 'mission') || { id: 0, page: 'about', section: 'mission', content: '' },
-        teamIntro: aboutContent.find((item) => item.section === 'teamIntro') || { id: 0, page: 'about', section: 'teamIntro', content: '' },
-      });
-
-      setTeamMembers((teamData.results || teamData) as TeamMember[]);
-      setTheme((themeData.results?.[0] || themeData || theme) as Theme);
-    } catch (err) {
-      setError('An error occurred while fetching data. Please try again later.');
-      console.error('Error fetching data:', err);
-    } finally {
-      setLoading(false);
-    }
-  }, [apiUrl]);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  // Dynamically set inline styles based on theme
   const bannerStyle: React.CSSProperties = {
     backgroundColor: theme.primaryColor,
     color: '#fff',
@@ -100,14 +52,13 @@ const AboutPage: React.FC = () => {
     fontFamily: theme.fontFamily,
   } as React.CSSProperties & { '--primary-500': string; '--secondary-500': string };
 
-  const bannerImage = content.ourStory.image ? `${apiUrl}${content.ourStory.image}` : 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1600';
+  const bannerImage = content.ourStory.image;
 
-  // Skeleton loading component
   const Skeleton = () => (
-    <div className="animate-pulse">
-      <div className="h-6 bg-gray-300 rounded w-3/4 mb-4"></div>
-      <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
-      <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+    <div className="space-y-4 animate-pulse">
+      <div className="h-10 bg-gray-300 rounded w-3/4 mb-2"></div>
+      <div className="h-6 bg-gray-300 rounded w-full"></div>
+      <div className="h-6 bg-gray-300 rounded w-5/6"></div>
     </div>
   );
 
@@ -132,77 +83,67 @@ const AboutPage: React.FC = () => {
         style={bannerStyle}
       />
 
-      <section className="section py-12" style={sectionStyle}>
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="section-title text-2xl md:text-3xl font-bold mb-6">Our Story</h2>
-              {loading ? <Skeleton /> : error ? <p className="text-red-500">{error}</p> : <p className="mb-4 text-gray-700" dangerouslySetInnerHTML={{ __html: content.ourStory.content }} />}
+      <section className="section py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden" style={sectionStyle}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center animate-fade-in-up">
+            <div className="order-2 lg:order-1">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-8 animate-slide-right">Our Story</h2>
+              <p className="text-xl text-gray-700 mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: '200ms' }} dangerouslySetInnerHTML={{ __html: content.ourStory.content }} />
             </div>
-            <div>
+            <div className="order-1 lg:order-2 animate-parallax">
               <img
                 src={bannerImage}
                 alt="Nimra Electricals Team"
-                className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
+                className="w-full h-72 sm:h-96 md:h-112 object-cover rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500"
                 loading="lazy"
               />
             </div>
           </div>
         </div>
+        <div className="absolute inset-0 bg-[var(--primary-500)]/5 -z-10 transform skew-y-3 opacity-50"></div>
       </section>
 
-      <section className="section py-12 bg-gray-50" style={sectionStyle}>
-        <div className="container">
-          <h2 className="section-title text-2xl md:text-3xl font-bold text-center mb-8">Our Vision & Mission</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            <div className="card p-6 bg-white shadow-md rounded-lg">
-              <h3 className="text-xl font-semibold mb-4 text-primary-500">Vision</h3>
-              {loading ? <Skeleton /> : error ? <p className="text-red-500">{error}</p> : <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: content.vision.content }} />}
+      <section className="section py-20 bg-gray-50 relative" style={sectionStyle}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center text-gray-800 mb-14 animate-slide-down">Our Vision & Mission</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+            <div className="card p-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500">
+              <h3 className="text-2xl font-semibold mb-6 text-[var(--primary-500)]">Vision</h3>
+              <p className="text-gray-700 text-lg leading-relaxed animate-fade-in-up" style={{ animationDelay: '300ms' }} dangerouslySetInnerHTML={{ __html: content.vision.content }} />
             </div>
-            <div className="card p-6 bg-white shadow-md rounded-lg">
-              <h3 className="text-xl font-semibold mb-4 text-primary-500">Mission</h3>
-              {loading ? <Skeleton /> : error ? <p className="text-red-500">{error}</p> : <ul className="space-y-2 text-gray-700" dangerouslySetInnerHTML={{ __html: content.mission.content }} />}
+            <div className="card p-8 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500">
+              <h3 className="text-2xl font-semibold mb-6 text-[var(--primary-500)]">Mission</h3>
+              <ul className="space-y-4 text-gray-700 list-disc pl-6 text-lg animate-fade-in-up" style={{ animationDelay: '300ms' }} dangerouslySetInnerHTML={{ __html: content.mission.content }} />
             </div>
           </div>
         </div>
+        <div className="absolute inset-0 bg-[var(--secondary-500)]/10 -z-10 transform rotate-2 skew-x-3 opacity-30"></div>
       </section>
 
-      <section className="section py-12" style={sectionStyle}>
-        <div className="container">
-          <h2 className="section-title text-2xl md:text-3xl font-bold text-center mb-8">Our Team</h2>
-          {loading ? <p className="text-center">Loading...</p> : error ? <p className="text-red-500 text-center">{error}</p> : <p className="text-center mb-4 text-gray-700" dangerouslySetInnerHTML={{ __html: content.teamIntro.content }} />}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-            {loading ? (
-              Array(3).fill(0).map((_, index) => (
-                <div key={index} className="card p-6 bg-gray-100 animate-pulse rounded-lg h-32"></div>
-              ))
-            ) : teamMembers.length > 0 ? (
-              teamMembers.map((member) => (
-                <div key={member.id} className="card p-6 bg-white shadow-md rounded-lg text-center">
-                  <h3 className="text-lg font-semibold text-primary-500">{member.name}</h3>
-                  <p className="text-gray-600">{member.role}</p>
-                  <p className="mt-2 text-blue-600 hover:underline"><a href={`tel:${member.contact}`}>{member.contact}</a></p>
-                </div>
-              ))
-            ) : (
-              <p className="text-center text-gray-700">No team members available.</p>
-            )}
+      <section className="section py-20 bg-gradient-to-br from-white to-gray-50 relative" style={sectionStyle}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center text-gray-800 mb-14 animate-slide-down">Our Team</h2>
+          <p className="text-center text-xl text-gray-700 mb-10 animate-fade-in-up" style={{ animationDelay: '200ms' }} dangerouslySetInnerHTML={{ __html: content.teamIntro.content }} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+            {teamMembers.map((member, index) => (
+              <div
+                key={member.id}
+                className="card p-6 bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-500 animate-slide-up-delay"
+                style={{ animationDelay: `${index * 200}ms` }}
+              >
+                <h3 className="text-xl font-semibold text-[var(--primary-500)] mb-3">{member.name}</h3>
+                <p className="text-gray-600 mb-2">{member.role}</p>
+                <p className="text-blue-600 hover:underline"><a href={`tel:${member.contact}`}>{member.contact}</a></p>
+              </div>
+            ))}
           </div>
-          <div className="text-center mt-8">
-            <button
-              onClick={fetchData}
-              className="btn bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-md flex items-center justify-center mx-auto"
-              disabled={loading}
-              aria-label="Refresh team data"
-            >
-              <RefreshCw className="w-5 h-5 mr-2" />
-              Refresh Data
-            </button>
-            <Link to="/contact" className="btn bg-secondary-500 hover:bg-secondary-600 text-white px-4 py-2 rounded-md ml-4">
+          <div className="text-center mt-12">
+            <Link to="/contact" className="btn bg-[var(--secondary-500)] hover:bg-[var(--secondary-600)] text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 animate-bounce-in" style={{ animationDelay: '600ms' }}>
               Contact Our Team
             </Link>
           </div>
         </div>
+        <div className="absolute inset-0 bg-[var(--primary-500)]/5 -z-10 transform skew-y-3 opacity-50"></div>
       </section>
     </>
   );

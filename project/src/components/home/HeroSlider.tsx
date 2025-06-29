@@ -10,6 +10,7 @@ import 'swiper/css/effect-fade';
 
 import videoSrc from '../../assets/4kNimra.mp4';
 import fullNameImage from '../../assets/images/Full_name.jpg';
+import SaudiVisionLogo from '../../assets/images/Saudi_Vision_2030_logo.svg.png';
 
 const productImages = {
   slide1: fullNameImage,
@@ -122,7 +123,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides }) => {
             >
               <div className="max-w-4xl mx-auto w-full p-6 z-60">
                 <h1
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 md:mb-10 text-white animate-slide-up"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 sm:mb-10 md:mb-12 text-white animate-slide-up-bounce"
                   aria-live="polite"
                 >
                   <span ref={typedRef} className="inline-block">
@@ -130,14 +131,14 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides }) => {
                   </span>
                 </h1>
                 <p
-                  className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 md:mb-10 max-w-prose mx-auto text-gray-200 animate-fade-in"
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-8 sm:mb-10 md:mb-12 max-w-prose mx-auto text-gray-200 animate-fade-in-up"
                   style={{ animationDelay: '200ms' }}
                 >
                   {slide.subtitle}
                 </p>
                 <Link
                   to={slide.ctaLink}
-                  className="btn btn-primary text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 md:py-4 animate-fade-in"
+                  className="btn btn-primary text-lg sm:text-xl md:text-2xl px-8 sm:px-10 py-3 sm:py-4 animate-glow-button"
                   style={{ animationDelay: '400ms' }}
                   aria-label={slide.ctaText}
                 >
@@ -151,6 +152,12 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides }) => {
         <div className="swiper-button-prev hidden sm:block" aria-label="Previous slide"></div>
         <div className="swiper-button-next hidden sm:block" aria-label="Next slide"></div>
       </Swiper>
+      <img
+        src={SaudiVisionLogo}
+        alt="Saudi Vision 2030 Logo"
+        className="absolute bottom-4 right-4 w-20 h-auto animate-fade-scale z-50"
+        loading="lazy"
+      />
     </section>
   );
 };

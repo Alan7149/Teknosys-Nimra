@@ -27,8 +27,10 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         Skip to content
       </a>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
-          isScrolled ? 'bg-gradient-to-r from-[var(--primary-500)] to-[var(--primary-600)] shadow-2xl' : 'bg-gradient-to-r from-[var(--primary-500)/80] to-[var(--primary-600)/80] backdrop-blur-md'
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-in-out ${
+          isScrolled
+            ? 'bg-[var(--primary-500)] shadow-2xl '
+            : 'bg-[var(--primary-500)/80] backdrop-blur-md'
         }`}
         style={{ height: '80px' }}
         role="navigation"
@@ -74,7 +76,9 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         </div>
 
         {isOpen && (
-          <div className="md:hidden bg-gradient-to-r from-[var(--primary-500)] to-[var(--primary-600)] backdrop-blur-md shadow-lg animate-slide-down">
+          <div
+            className={`md:hidden bg-[var(--primary-500)] backdrop-blur-md shadow-lg animate-slide-down transition-all duration-700 ease-in-out`}
+          >
             <nav
               className="flex flex-col items-center space-y-5 py-5"
               aria-label="Mobile navigation"
@@ -91,8 +95,8 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
                   onClick={toggleMenu}
                 >
                   {navLink.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--secondary-500)] hover:w-full transition-all duration-500 ease-in-out"></span>
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--secondary-500)] opacity-0 hover:opacity-100 hover:animate-pulse-slow transition-opacity duration-500"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--secondary-500)] hover:w-full transition-all duration-500Ease-in-out"></span>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--secondary-500)] opacity-0 group-hover:opacity-100 group-hover:animate-pulse-slow transition-opacity duration-500"></span>
                 </NavLink>
               ))}
             </nav>

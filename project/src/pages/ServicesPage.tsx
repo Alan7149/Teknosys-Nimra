@@ -145,7 +145,7 @@ const ServicesPage: React.FC = () => {
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             </div>
-            <div className="flex space-x-2 overflow-x-auto pb-2">
+            <div className="flex space-x-2 overflow-x-auto pb-2 md:ml-6">
               {categories.map((category) => (
                 <button
                   key={category}

@@ -11,17 +11,6 @@
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
 
-<<<<<<< Updated upstream
-    const navLinks = [
-      { to: '/', label: 'Home' },
-      { to: '/about', label: 'About' },
-      { to: '/services', label: 'Products & Services' },
-      { to: '/projects', label: 'Projects' },
-      { to: '/team', label: 'Team' },
-      { to: '/blog', label: 'Blog' },
-      { to: '/contact', label: 'Contact' },
-    ];
-=======
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
@@ -29,7 +18,6 @@
     { to: '/team', label: 'Team' },
     { to: '/contact', label: 'Contact' },
   ];
->>>>>>> Stashed changes
 
     return (
       <>

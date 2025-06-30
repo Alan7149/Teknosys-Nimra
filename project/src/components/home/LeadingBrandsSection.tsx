@@ -34,7 +34,7 @@ const LeadingBrandsSection: React.FC = () => {
     <section className="py-20 bg-gradient-to-br from-gray-100 to-white w-full">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-extrabold mb-12 text-center text-gray-800 animate-slide-down">
-          <span className="text-[var(--secondary-500)]">Our</span> Premier Brands
+          <span className="text-[var(--secondary-500)]">Our</span> Top Brands
         </h2>
         <div className="border-b-8 border-[var(--primary-500)] w-24 mx-auto mb-12 animate-pulse-slow"></div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-6 w-full mx-auto max-w-full">

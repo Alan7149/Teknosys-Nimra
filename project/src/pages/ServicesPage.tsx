@@ -145,7 +145,11 @@ const ServicesPage: React.FC = () => {
               />
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             </div>
+<<<<<<< Updated upstream
             <div className="flex space-x-2 overflow-x-auto pb-2">
+=======
+            {/* <div className="flex space-x-2 overflow-x-auto pb-2 md:ml-6">
+>>>>>>> Stashed changes
               {categories.map((category) => (
                 <button
                   key={category}
@@ -159,7 +163,7 @@ const ServicesPage: React.FC = () => {
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </button>
               ))}
-            </div>
+            </div> */}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up">

@@ -24,8 +24,8 @@ const ContactCTA: React.FC = () => {
           </Link>
           <a
             href="tel:+966126697155"
-            className="btn btn-outline text-lg px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 hover:text-white hover:shadow-md transition-all duration-300 border border-white/20 animate-bounce-in"
-            style={{ animationDelay: '600ms' }}
+            className="btn btn-secondary text-lg px-6 py-3 rounded-full bg-[var(--secondary-500)] hover:bg-[var(--secondary-600)] hover:shadow-md hover:scale-105 transition-all duration-300 border border-white/20 animate-bounce-in"
+            style={{ animationDelay: '400ms' }}
             aria-label="Call us at +966 12 669 7155"
           >
             <Phone className="w-5 h-5 mr-2" aria-hidden="true" />

@@ -23,7 +23,7 @@ const brandLogos = [
   { file: 'abb.png', alt: 'ABB' },
   { file: 'cs.png', alt: 'C&S Electric' },
   { file: 'jeddahcablescomapny.png', alt: 'Jeddah Cables Company' },
-  { file: 'lselectric.png', alt: 'LS Electric' },
+  { file: 'lselectric.jpg', alt: 'LS Electric' },
   { file: 'socomec.png', alt: 'Socomec' },
   { file: 'furse.jpg', alt: 'Furse' },
   { file: 'leipole.png', alt: 'Leipole' },

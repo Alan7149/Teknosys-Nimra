@@ -53,7 +53,7 @@ const AboutPage: React.FC = () => {
     },
   };
 
-  const theme = { primaryColor: '#1E3A8A', secondaryColor: '#DC2626', fontFamily: 'Inter, sans-serif' };
+  const theme = { primaryColor: '#fcbd34', secondaryColor: '#fcbd34', fontFamily: 'Inter, sans-serif' };
 
   const bannerStyle: React.CSSProperties = {
     backgroundColor: theme.primaryColor,

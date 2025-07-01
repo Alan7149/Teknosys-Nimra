@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import ScrollToTop from '../common/ScrollToTop';
-
+// import ScrollToTop from '../common/ScrollToTop';
+import WhatsAppContact from '../common/WhatsAppContact';
 const Layout: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false); // State to track scroll position
 
@@ -24,7 +24,8 @@ const Layout: React.FC = () => {
         <Outlet /> 
       </main>
       <Footer /> 
-      <ScrollToTop /> 
+      {/* <ScrollToTop />  */}
+      <WhatsAppContact />
     </div>
   );
 };

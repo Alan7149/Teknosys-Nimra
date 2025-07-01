@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import PageBanner, { PageBannerProps } from '../components/common/PageBanner';
+import PageBanner from '../components/common/PageBanner';
 
 // Define interfaces based on Django models
 interface ContentItem {

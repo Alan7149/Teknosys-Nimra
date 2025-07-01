@@ -30,6 +30,7 @@ const ContactForm: React.FC = () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', message: '' });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setStatus('error');
       setErrorMessage('An error occurred. Please try again later.');

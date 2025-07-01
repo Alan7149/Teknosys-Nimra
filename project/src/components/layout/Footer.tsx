@@ -67,11 +67,11 @@ const Footer: React.FC = () => {
                   Products & Services
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/projects" className="hover:text-secondary-300 transition-colors" aria-label="Projects page">
                   Projects
-                </Link>
-              </li>
+                </Link> */}
+              {/* </li> */}
               <li>
                 <Link to="/contact" className="hover:text-secondary-300 transition-colors" aria-label="Contact page">
                   Contact

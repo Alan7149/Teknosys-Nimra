@@ -15,9 +15,9 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
     { to: '/services', label: 'Products & Services' },
-    { to: '/projects', label: 'Projects' },
+    // { to: '/projects', label: 'Projects' },
     { to: '/team', label: 'Team' },
-    { to: '/blog', label: 'Blog' },
+    // { to: '/blog', label: 'Blog' },
     { to: '/contact', label: 'Contact' },
   ];
 

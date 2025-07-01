@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import LogoImage from '../../assets/images/Logo.gif';
+import LogoImage from '@/assets/images/Logo.gif';
 import { Phone, Mail, MapPin, Instagram, Youtube, MessageCircle, X } from 'lucide-react';
-import whatsappQr from '../../assets/images/whatsapp-qr.jpg';
-import youtubeQr from '../../assets/images/youtube-qr.jpg';
-import instagramQr from '../../assets/images/instagram-qr.jpg';
+import whatsappQr from '@/assets/images/whatsapp-qr.jpg';
+import youtubeQr from '@/assets/images/youtube-qr.jpg';
+import instagramQr from '@/assets/images/instagram-qr.jpg';
 
 const Footer: React.FC = () => {
   const [isPopupOpen, setIsPopupOpen] = useState<'whatsapp' | 'youtube' | 'instagram' | null>(null);

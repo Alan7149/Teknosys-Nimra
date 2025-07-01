@@ -1,7 +1,7 @@
   import React, { useState } from 'react';
   import { Link, NavLink } from 'react-router-dom';
   import { Menu, X } from 'lucide-react';
-  import LogoImage from '../../assets/images/Logo.gif';
+  import LogoImage from '@/assets/images/Logo.gif';
 
   interface HeaderProps {
     isScrolled: boolean;

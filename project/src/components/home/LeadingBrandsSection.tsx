@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Dynamically import all logo images
-const images = import.meta.glob('../../assets/images/brands/*{png,jpg,jpeg}', {
+const images = import.meta.glob('@/assets/images/brands/*{png,jpg,jpeg}', {
   eager: true,
   import: 'default',
 });

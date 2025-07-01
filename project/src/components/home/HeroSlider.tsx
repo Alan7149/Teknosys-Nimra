@@ -11,9 +11,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 
-import videoSrc from '../../assets/4kNimra.mp4';
-import fullNameImage from '../../assets/images/Full_name.jpg';
-import SaudiVisionLogo from '../../assets/images/Saudi_Vision_2030_logo.svg.png';
+import videoSrc from '@/assets/4kNimra.mp4';
+import fullNameImage from '@/assets/images/Full_name.jpg';
+import SaudiVisionLogo from '@/assets/images/Saudi_Vision_2030_logo.svg.png';
 
 const productImages = {
   slide1: fullNameImage,

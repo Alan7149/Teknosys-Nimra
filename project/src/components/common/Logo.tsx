@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogoImage from '../../assets/images/Logo.gif';
+import LogoImage from '@/assets/images/Logo.gif';
 
 const Logo: React.FC = () => {
   return (

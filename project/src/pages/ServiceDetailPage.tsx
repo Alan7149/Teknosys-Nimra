@@ -4,6 +4,12 @@ import { useParams, Link } from 'react-router-dom';
 import PageBanner from '../components/common/PageBanner';
 import { CheckCircle } from 'lucide-react';
 
+// Dynamically import all logo images (png, jpg, jpeg)
+const brandImages = import.meta.glob('/static/assets/images/brands/*.{png,jpg,jpeg}', {
+  eager: true,
+  import: 'default'
+});
+
 const services = [
   {
     id: 1,
@@ -13,7 +19,7 @@ const services = [
     detailedDescription: `
       <p>We distribute enclosures designed for switchgear and control gear to enhance electrical installations in commercial and light industrial premises. Our range includes wall-mounting, floor-standing, and extendable enclosures made of Sheet Steel, Stainless Steel, Aluminum, & many more.</p>
     `,
-    image: '/src/assets/images/ProductsNimra/Enclosing_Switchboard_System.jpg',
+    image: '/static/assets/images/ProductsNimra/Enclosing_Switchboard_System.jpg',
     link: '/services/enclosures-switchboards',
     features: [
       { name: 'Sheet Steel', info: 'Durable enclosures for general-purpose applications, resistant to corrosion.' },
@@ -33,7 +39,7 @@ const services = [
     detailedDescription: `
       <p>Our world-class, time-proven electrical components include circuit breakers, switches, meters, enclosures, and switchboards. All products and solutions are designed to help individuals and organizations make the most of their energy at a cost-effective price. Environmental protection, health & safety, and outstanding services are our top priorities at Nimra Jeddah Electrical Est.</p>
     `,
-    image: '/src/assets/images/ProductsNimra/Low_voltage_components.jpg',
+    image: '/static/assets/images/ProductsNimra/Low_voltage_components.jpg',
     link: '/services/low-voltage-components',
     features: [
       { name: 'Circuit Breakers', info: 'Protect circuits from overloads and short circuits.' },
@@ -56,9 +62,9 @@ const services = [
     slug: 'busbars',
     description: 'High-conductivity copper busbars for superior electrical and mechanical performance.',
     detailedDescription: `
-      <p>Copper busbars in electrical applications require several key electrical and mechanical properties which include high electrical conductivity, good strength, good formability, and surface flatness. Precision Electricals will continue to play a major role in supplying superior quality products to the industry.</p>
+      <p>Copper busbars in electrical applications require several key electrical and mechanical properties which include high electrical conductivity, good strength, good formability, and surface flatness. Nimra Electricals will continue to play a major role in supplying superior quality products to the industry.</p>
     `,
-    image: '/src/assets/images/ProductsNimra/Busbars.jpg',
+    image: '/static/assets/images/ProductsNimra/Busbars.jpg',
     link: '/services/busbars',
     features: [
       { name: 'Tinned Copper Busbars', info: 'Corrosion-resistant with enhanced conductivity.' },
@@ -76,7 +82,7 @@ const services = [
     detailedDescription: `
       <p>Nimra Electricals provides high-quality electrical measurement, electrical protection, time relays, process control, and automation components.</p>
     `,
-    image: '/src/assets/images/ProductsNimra/Relays_Timers_PowerSuppliers.jpg',
+    image: '/static/assets/images/ProductsNimra/Relays_Timers_PowerSuppliers.jpg',
     link: '/services/relays-timers',
     features: [
       { name: 'Earth Leakage Relays with CBCT', info: 'Detects leakage currents for safety.' },
@@ -101,7 +107,7 @@ const services = [
     detailedDescription: `
       <p>Nimra Electricals provides world-recognized agency-certified isolation, on-load breaking, manual or automatic changeover switching systems for managed power and secured facilities.</p>
     `,
-    image: '/src/assets/images/ProductsNimra/Isolators_switching_protectiondevices.jpg',
+    image: '/static/assets/images/ProductsNimra/Isolators_switching_protectiondevices.jpg',
     link: '/services/isolators-switching',
     features: [
       { name: 'Weatherproof Isolators', info: 'Outdoor-rated isolation switches.' },
@@ -123,7 +129,7 @@ const services = [
     detailedDescription: `
       <p>Nimra Electricals provides devices for metering & protection applications, measurement, and analysis of a wide range of electrical parameters. Implementation of test and measurement devices improves the site’s power quality, monitors energy consumption, and alerts occupants about excess power consumption.</p>
     `,
-    image: '/src/assets/images/ProductsNimra/Test_measurementdevices.jpg',
+    image: '/static/assets/images/ProductsNimra/Test_measurementdevices.jpg',
     link: '/services/test-measurement',
     features: [
       { name: 'Analog Panel Meters', info: 'Traditional analog readings.' },
@@ -143,7 +149,7 @@ const services = [
     detailedDescription: `
       <p>Nimra Electricals provide high-temperature, flame-retardant cables designed for use in switch control, relay, and instrumentation panels of power switchgear to act as internal connectors in rectifier equipment, motor starters, and controllers. We offer a comprehensive range of electrical interconnection products based on innovative spring pressure termination technology. Only these clamping and connecting systems can guarantee proper functioning and 100% reliability – and that all without any maintenance.</p>
     `,
-    image: '/src/assets/images/ProductsNimra/cabel_wiringaccessories.png',
+    image: '/static/assets/images/ProductsNimra/cabel_wiringaccessories.png',
     link: '/services/cable-wiring',
     features: [
       { name: 'Panel Wires', info: 'Wiring for control panels.' },
@@ -169,7 +175,7 @@ const services = [
     detailedDescription: `
       <p>Nimra Electricals is the leading distributor of international brands in the field of enclosure accessories. Our products provide various solutions to thermal management systems, access solutions, insulation, and protection for the industry.</p>
     `,
-    image: '/src/assets/images/ProductsNimra/panel_accessories.png',
+    image: '/static/assets/images/ProductsNimra/panel_accessories.png',
     link: '/services/panel-accessories',
     features: [
       { name: 'Fan Filters', info: 'Ensures proper ventilation.' },
@@ -247,14 +253,29 @@ const ServiceDetailPage: React.FC = () => {
                 <div className="mb-8">
                   <h3 className="text-2xl font-bold mb-4 text-[var(--primary-500)]">Brand Partners</h3>
                   <div className="flex flex-wrap gap-4">
-                    {service.brands.map((brand) => (
-                      <img
-                        key={brand}
-                        src={`/src/assets/images/brands/${brand}.png`}
-                        alt={`${brand} logo`}
-                        className="h-16 w-auto object-contain hover:scale-110 transition-transform duration-300"
-                      />
-                    ))}
+                    {service.brands.map((brand) => {
+                      const possibleExtensions = ['png', 'jpg', 'jpeg'];
+                      const imageSrc = (
+                        possibleExtensions
+                          .map(ext => brandImages[`/static/assets/images/brands/${brand}.${ext}`])
+                          .find(Boolean) || 'https://picsum.photos/200/200'
+                      ) as string;
+
+                      return (
+                        <img
+                          key={brand}
+                          src={imageSrc}
+                          alt={`${brand} logo`}
+                          className="h-16 w-20 object-contain rounded-lg hover:scale-110 transition-transform duration-300"
+                          loading="lazy"
+                          decoding="async"
+                          onError={(e) => {
+                            console.error(`Failed to load brand logo: ${brand}`);
+                            e.currentTarget.src = 'https://picsum.photos/200/200';
+                          }}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -300,7 +321,7 @@ const ServiceDetailPage: React.FC = () => {
                             <img
                               src={related.image}
                               alt={related.title}
-                              className="w-16 h-16 object-cover rounded-lg mr-4"
+                              className="w-20 h-16 object-cover rounded-lg mr-4"
                             />
                             <h4 className="font-semibold group-hover:text-secondary-500 transition-colors">
                               {related.title}

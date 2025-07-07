@@ -6,10 +6,16 @@ interface AboutSectionProps {
   description: string;
   ctaText: string;
   ctaLink: string;
-  image: string;
+  image?: string;
 }
 
-const AboutSection: React.FC<AboutSectionProps> = ({ title, description, ctaText, ctaLink, image }) => {
+const AboutSection: React.FC<AboutSectionProps> = ({
+  title,
+  description,
+  ctaText,
+  ctaLink,
+  image = 'https://picsum.photos/id/1035/800/600',
+}) => {
   return (
     <section
       className="section relative overflow-hidden bg-gradient-to-br from-gray-50 to-white"
@@ -53,14 +59,14 @@ const AboutSection: React.FC<AboutSectionProps> = ({ title, description, ctaText
           <div className="order-1 lg:order-2 relative animate-parallax">
             <div className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] overflow-hidden rounded-xl shadow-2xl">
               <img
-                src={image || '/fallback-image.jpg'} // Fallback image if path fails
+                src={image}
                 alt={title}
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 loading="lazy"
                 decoding="async"
                 onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = '/fallback-image.jpg'; // Fallback on error
+                  console.error(`Failed to load AboutSection image: ${image}`);
+                  e.currentTarget.src = 'https://picsum.photos/800/600';
                 }}
               />
             </div>

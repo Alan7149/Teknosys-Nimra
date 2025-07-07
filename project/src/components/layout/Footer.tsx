@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import LogoImage from '@/assets/images/Logo.gif';
-import { Phone, Mail, MapPin, Instagram, Youtube, MessageCircle, X } from 'lucide-react';
-import whatsappQr from '@/assets/images/whatsapp-qr.jpg';
-import youtubeQr from '@/assets/images/youtube-qr.jpg';
-import instagramQr from '@/assets/images/instagram-qr.jpg';
+import LogoImage from '../../assets/images/Logo.gif';
+import { Phone, Mail, MapPin, Instagram, Youtube, X } from 'lucide-react';
+import youtubeQr from '../../assets/images/youtube-qr.jpg';
+import instagramQr from '../../assets/images/instagram-qr.jpg';
 
 const Footer: React.FC = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState<'whatsapp' | 'youtube' | 'instagram' | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState<'youtube' | 'instagram' | null>(null);
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-  const handleQrClick = (platform: 'whatsapp' | 'youtube' | 'instagram') => {
+  const handleQrClick = (platform: 'youtube' | 'instagram') => {
     setIsPopupOpen(platform);
   };
 
@@ -101,13 +100,6 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center space-x-4 mt-4">
                 <button
-                  onClick={() => handleQrClick('whatsapp')}
-                  className="text-white hover:text-secondary-300 focus:outline-none focus:ring-2 focus:ring-secondary-300 rounded-full p-1"
-                  aria-label="Open WhatsApp QR code"
-                >
-                  <MessageCircle className="w-6 h-6" />
-                </button>
-                <button
                   onClick={() => handleQrClick('youtube')}
                   className="text-white hover:text-secondary-300 focus:outline-none focus:ring-2 focus:ring-secondary-300 rounded-full p-1"
                   aria-label="Open YouTube QR code"
@@ -155,7 +147,19 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="border-t border-white/20 mt-6 pt-4 text-center text-xs md:text-sm">
-          <p>© {new Date().getFullYear()} Nimra Jeddah Electric Est. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Nimra Jeddah Electric Est. All rights reserved.{' '}
+            Powered by:{' '}
+            <a
+              href="https://www.teknosys.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-secondary-300 transition-colors"
+              aria-label="Visit TEKNOSys website"
+            >
+              TEKNOSys
+            </a>
+          </p>
         </div>
       </div>
 
@@ -178,7 +182,7 @@ const Footer: React.FC = () => {
               <X className="w-6 h-6" />
             </button>
             <img
-              src={isPopupOpen === 'whatsapp' ? whatsappQr : isPopupOpen === 'youtube' ? youtubeQr : instagramQr}
+              src={isPopupOpen === 'youtube' ? youtubeQr : instagramQr}
               alt={`${isPopupOpen} QR Code`}
               className="w-full h-auto object-contain"
               loading="lazy"
@@ -190,4 +194,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

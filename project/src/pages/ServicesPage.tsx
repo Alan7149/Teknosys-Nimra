@@ -5,6 +5,16 @@ import { Link } from 'react-router-dom';
 import PageBanner from '../components/common/PageBanner';
 import { Search } from 'lucide-react';
 
+// Import images
+import EnclosingSwitchboard from '../assets/images/ProductsNimra/Enclosing_Switchboard_System.jpg';
+import LowVoltageComponents from '../assets/images/ProductsNimra/Low_voltage_components.jpg';
+import Busbars from '../assets/images/ProductsNimra/Busbars.jpg';
+import RelaysTimers from '../assets/images/ProductsNimra/Relays_Timers_PowerSuppliers.jpg';
+import IsolatorsSwitching from '../assets/images/ProductsNimra/Isolators_switching_protectiondevices.jpg';
+import TestMeasurement from '../assets/images/ProductsNimra/Test_measurementdevices.jpg';
+import CableWiring from '../assets/images/ProductsNimra/cabel_wiringaccessories.png';
+import PanelAccessories from '../assets/images/ProductsNimra/panel_accessories.png';
+
 const services = [
   {
     id: 1,
@@ -12,7 +22,7 @@ const services = [
     slug: 'enclosures-switchboards',
     description: 'Wall-mounting, floor-standing, and modular enclosures for commercial and industrial applications.',
     category: 'enclosures',
-    image: '/src/assets/images/ProductsNimra/Enclosing_Switchboard_System.jpg',
+    image: EnclosingSwitchboard,
     link: '/services/enclosures-switchboards',
     brands: ['sch', 'alfnar', 'ksa_enclosure', 'nvent3'],
     subcategories: ['Sheet Steel', 'Enclosures', 'Stainless Steel Enclosures', 'Floor Standing Enclosures', 'Modular Enclosures', 'Switchboard Systems'],
@@ -23,7 +33,7 @@ const services = [
     slug: 'low-voltage-components',
     description: 'Circuit breakers, switches, meters, enclosures, and switchboards for efficient energy management.',
     category: 'components',
-    image: '/src/assets/images/ProductsNimra/Low_voltage_components.jpg',
+    image: LowVoltageComponents,
     link: '/services/low-voltage-components',
     brands: ['sch', 'cselectric', 'himel', 'socomec', 'abb'],
     subcategories: ['Circuit Breakers', 'Contactor & Overload Relays', 'Manual Motor Starters', 'VFDs', 'Soft Starters', 'Manual Changeover Switches', 'ATS', 'Safety Switches', 'Fuse & Fuse Bases', 'Weatherproof Isolators', 'Signaling Devices'],
@@ -34,7 +44,7 @@ const services = [
     slug: 'busbars',
     description: 'High-conductivity copper busbars for superior electrical and mechanical performance.',
     category: 'busbars',
-    image: '/src/assets/images/ProductsNimra/Busbars.jpg',
+    image: Busbars,
     link: '/services/busbars',
     subcategories: ['Tinned Copper Busbars', 'Comb Busbars', 'Copper Tapes', 'Distribution Blocks', 'Flexible Copper Busbars'],
   },
@@ -44,7 +54,7 @@ const services = [
     slug: 'relays-timers',
     description: 'High-quality measurement, protection, and automation components.',
     category: 'relays',
-    image: '/src/assets/images/ProductsNimra/Relays_Timers_PowerSuppliers.jpg',
+    image: RelaysTimers,
     link: '/services/relays-timers',
     brands: ['sch', 'selec', 'himel'],
     subcategories: ['Earth Leakage Relays with CBCT', 'Voltage & Current Monitoring Relays', 'APFC Controllers', 'Over Current & Earth fault Protection Relays', 'ON-OFF-STARDELTA', 'CYCLIC TIMERS', 'HMI/PLS', 'Water Level Controllers', 'Power Supplies', 'Control Transformers', 'UPS'],
@@ -55,7 +65,7 @@ const services = [
     slug: 'isolators-switching',
     description: 'Certified isolation and changeover switching systems for secured power management.',
     category: 'isolators',
-    image: '/src/assets/images/ProductsNimra/Isolators_switching_protectiondevices.jpg',
+    image: IsolatorsSwitching,
     link: '/services/isolators-switching',
     brands: ['cselectric', 'socomec'],
     subcategories: ['Weatherproof Isolators', 'Photovoltaic Isolators', 'Door Mounting Loadbreak Switches', 'Panel Mounting Loadbreak Switches', 'Manual Changeover Switches', 'Bypass Switches', 'Surge Protection Devices', 'System 1000/3000 Lightning Protection System'],
@@ -66,7 +76,7 @@ const services = [
     slug: 'test-measurement',
     description: 'Devices for metering, protection, and analysis of electrical parameters.',
     category: 'measurement',
-    image: '/src/assets/images/ProductsNimra/Test_measurementdevices.jpg',
+    image: TestMeasurement,
     link: '/services/test-measurement',
     brands: ['selec', 'cselectric', 'socomec', 'abb'],
     subcategories: ['Analog Panel Meters', 'Digital Panel Meters', 'Digital KWH Meters', 'Digital Multifunction Meters', 'Diris Digiwire Metering', 'Current Transformers'],
@@ -77,7 +87,7 @@ const services = [
     slug: 'cable-wiring',
     description: 'High-temperature, flame-retardant cables and interconnection products for reliable installations.',
     category: 'cables',
-    image: '/src/assets/images/ProductsNimra/cabel_wiringaccessories.png',
+    image: CableWiring,
     link: '/services/cable-wiring',
     brands: ['trinity', 'elmex', 'alfnar', 'cawabel'],
     subcategories: ['Panel Wires', 'Multicore Flexible Cables', 'Terminal Blocks', 'Wiring Ducts', 'Wire End Sleeves', 'Cable Markers', 'Busbar Sleeves', 'Cable Ties', 'Earthing Materials', 'Cable Lugs', 'Cable Glands', 'Electrical Tape 3M/Scotch'],
@@ -88,7 +98,7 @@ const services = [
     slug: 'panel-accessories',
     description: 'Solutions for thermal management, access, insulation, and protection.',
     category: 'accessories',
-    image: '/src/assets/images/ProductsNimra/panel_accessories.png',
+    image: PanelAccessories,
     link: '/services/panel-accessories',
     brands: ['leipole', 'pce', 'axis', 'furse'],
     subcategories: ['Fan Filters', 'Thermostat', 'Hygrostat', 'Heaters', 'Cooling Units', 'Locks', 'Hinges', 'Insulators', 'Pillars', 'Neutral Links', 'Busbar Supports'],

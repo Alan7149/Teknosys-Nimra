@@ -4,10 +4,9 @@ import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
-// import ProjectsPage from './pages/ProjectsPage';
 import ContactPage from './pages/ContactPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
-// import ProjectDetailPage from './pages/ProjectDetailPage';
+import TeamMemberPage from './pages/TeamMemberPage'; // Add import
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -18,7 +17,7 @@ function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="services" element={<ServicesPage />} />
         <Route path="services/:id" element={<ServiceDetailPage />} />
-        {/* <Route path="projects/:id" element={<ProjectDetailPage />} /> */}
+        <Route path="team" element={<TeamMemberPage />} /> {/* Add TeamMemberPage route */}
         <Route path="contact" element={<ContactPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

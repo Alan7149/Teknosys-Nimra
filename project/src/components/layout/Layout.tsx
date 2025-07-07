@@ -1,30 +1,29 @@
-// Import React and components
 import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import ScrollToTop from '../common/ScrollToTop';
+import WhatsApp from '../common/Whatsapp';
 
 const Layout: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false); // State to track scroll position
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // Show header after 50px scroll
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll); // Cleanup event listener
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header isScrolled={isScrolled} /> 
-      <main className="flex-grow">
-        <Outlet /> 
+      <Header isScrolled={isScrolled} />
+      <main className="flex-grow" id="main-content">
+        <Outlet />
       </main>
-      <Footer /> 
-      <ScrollToTop /> 
+      <Footer />
+      <WhatsApp />
     </div>
   );
 };
